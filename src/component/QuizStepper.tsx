@@ -56,11 +56,11 @@ const QuizStepper = () => {
   return (
     <CenterContainer>
       <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-        <Box component="h3" sx={{ color: white, textAlign: "center" }}>
+        <Box component="h3" sx={{ textAlign: "center" }}>
           {questionSet.title}
         </Box>
         <MobileStepper
-          sx={{ bgcolor: flowersLikeEyes.purple, color: white, justifyContent: "center", width: "100%" }}
+          sx={{ bgcolor: flowersLikeEyes.purple, justifyContent: "center", width: "100%" }}
           variant="progress"
           steps={maxSteps}
           position="static"
@@ -84,7 +84,7 @@ const QuizStepper = () => {
         )}
       </Box>
 
-      <Box sx={{ color: white, mb: "30px" }}>
+      <Box sx={{ mb: "30px" }}>
         <Typography>{setSteps[activeStep].question}</Typography>
       </Box>
 

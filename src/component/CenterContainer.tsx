@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
-import { flowersLikeEyes } from "../values/colors";
+import { flowersLikeEyes, white } from "../values/colors";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const CenterContainer = ({ children }: Props) => {
@@ -20,6 +20,7 @@ const CenterContainer = ({ children }: Props) => {
         height: "400px",
         borderRadius: "10px",
         boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23)",
+        color: white,
       }}
     >
       {children}

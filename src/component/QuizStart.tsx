@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { flowersLikeEyes, white } from "../values/colors";
 import CenterContainer from "./CenterContainer";
+import CenterBox from "./CenterBox";
 
 interface Props {
   onClick?: () => void;
@@ -9,20 +10,10 @@ interface Props {
 const QuizStart = ({ onClick }: Props) => {
   return (
     <CenterContainer>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%",
-          textAlign: "center",
-        }}
-      >
+      <CenterBox>
         <Typography
           sx={{
             fontWeight: "bold",
-            color: white,
             mb: "20px",
           }}
         >
@@ -31,7 +22,7 @@ const QuizStart = ({ onClick }: Props) => {
         <Button variant="contained" onClick={onClick}>
           Start
         </Button>
-      </Box>
+      </CenterBox>
     </CenterContainer>
   );
 };
