@@ -6,7 +6,7 @@ interface Props {
   onClick?: () => void;
 }
 
-const QuizStart = ({ onClick }: Props) => {
+const Start = ({ onClick }: Props) => {
   return (
     <CenterContainer>
       <CenterBox>
@@ -26,4 +26,4 @@ const QuizStart = ({ onClick }: Props) => {
   );
 };
 
-export default QuizStart;
+export default Start;

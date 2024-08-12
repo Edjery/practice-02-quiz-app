@@ -1,23 +1,26 @@
 import { Box, Button, MobileStepper, Typography } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-import { flowersLikeEyes, red, white } from "../values/colors";
-import questionSetA from "../values/questionSetA";
-import CenterContainer from "./CenterContainer";
-import indexToLetter from "./helper/indexToLetter";
+import { flowersLikeEyes, red, white } from "../../values/colors";
+import questionSetA from "../../values/questionSetA";
+import CenterContainer from "../common/CenterContainer";
+import indexToLetter from "../helper/indexToLetter";
 import OptionButton from "./OptionButton";
-import QuestionSet from "../values/interface/QuestionSet";
+import QuestionSet from "../../values/interface/QuestionSet";
+import { useNavigate } from "react-router-dom";
 
 const questionSet: QuestionSet = questionSetA;
-const initialAnswerSet: string[] = Array(questionSet.questions.length).fill(null);
+const initialAnswerList: string[] = Array(questionSet.questions.length).fill(null);
 const errorMessage: string = "All questions must be answered!";
 
-const QuizStepper = () => {
-  const setSteps = questionSet.questions;
-  const maxSteps = setSteps.length;
+const Stepper = () => {
+  const questions = questionSet.questions;
+  const maxSteps = questions.length;
 
   const [activeStep, setActiveStep] = useState(0);
   const [isError, setIsError] = useState(false);
-  const [answerSet, setAnswerSet] = useState(initialAnswerSet);
+  const [answerList, setAnswerList] = useState(initialAnswerList);
+
+  const navigate = useNavigate();
 
   const handleNext = useCallback(() => {
     if (isError) setIsError(false);
@@ -27,14 +30,13 @@ const QuizStepper = () => {
     } else {
       const validationResult = validate();
       if (validationResult.success) {
-        console.log(answerSet);
-        console.log("success");
+        navigate("result", { state: { answerList, questionSet } });
       } else {
         setActiveStep(validationResult.currentStep);
         setIsError(true);
       }
     }
-  }, [activeStep, isError, maxSteps, answerSet]);
+  }, [activeStep, isError, maxSteps, answerList]);
 
   const handleBack = useCallback(() => {
     if (isError) setIsError(false);
@@ -43,7 +45,7 @@ const QuizStepper = () => {
 
   const handleChoice = useCallback(
     (value: string) => {
-      setAnswerSet((prevAnswers) => {
+      setAnswerList((prevAnswers) => {
         const updatedAnswers = [...prevAnswers];
         updatedAnswers[activeStep] = value;
         return updatedAnswers;
@@ -53,14 +55,14 @@ const QuizStepper = () => {
   );
 
   const validate = useCallback(() => {
-    const currentStep = answerSet.findIndex((item) => item === null);
+    const currentStep = answerList.findIndex((item) => item === null);
     return {
       success: currentStep === -1,
       currentStep,
     };
-  }, [answerSet]);
+  }, [answerList]);
 
-  const currentQuestion = useMemo(() => setSteps[activeStep], [activeStep, setSteps]);
+  const currentQuestion = useMemo(() => questions[activeStep], [activeStep, questions]);
 
   return (
     <CenterContainer>
@@ -98,7 +100,7 @@ const QuizStepper = () => {
       </Box>
 
       {currentQuestion.choices.map((choice, index) => {
-        const isActive = answerSet[activeStep] === choice;
+        const isActive = answerList[activeStep] === choice;
         return (
           <OptionButton key={index} onclick={() => handleChoice(choice)} active={isActive}>
             {indexToLetter(index)}. {choice}
@@ -127,4 +129,4 @@ const QuizStepper = () => {
   );
 };
 
-export default QuizStepper;
+export default Stepper;

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
-import { flowersLikeEyes, white } from "../values/colors";
+import { flowersLikeEyes, white } from "../../values/colors";
 
 interface Props {
   children?: ReactNode;
