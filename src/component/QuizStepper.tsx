@@ -1,57 +1,66 @@
 import { Box, Button, MobileStepper, Typography } from "@mui/material";
-import { useState } from "react";
-import { flowersLikeEyes, white, red } from "../values/colors";
-import questionListA from "../values/questionSetA";
+import { useCallback, useMemo, useState } from "react";
+import { flowersLikeEyes, red, white } from "../values/colors";
+import questionSetA from "../values/questionSetA";
 import CenterContainer from "./CenterContainer";
 import indexToLetter from "./helper/indexToLetter";
 import OptionButton from "./OptionButton";
+import QuestionSet from "../values/interface/QuestionSet";
 
-const questionSet = questionListA;
-const answerSet: string[] | null[] = [];
+const questionSet: QuestionSet = questionSetA;
+const initialAnswerSet: string[] = Array(questionSet.questions.length).fill(null);
+const errorMessage: string = "All questions must be answered!";
 
 const QuizStepper = () => {
-  const setSteps = questionSet.questionSet;
+  const setSteps = questionSet.questions;
   const maxSteps = setSteps.length;
-  const errorMessage = "All questions must be answered!";
-  answerSet.length = maxSteps;
 
   const [activeStep, setActiveStep] = useState(0);
   const [isError, setIsError] = useState(false);
+  const [answerSet, setAnswerSet] = useState(initialAnswerSet);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isError) setIsError(false);
 
-    if (activeStep !== maxSteps - 1) setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    else {
-      const validataionResult = validate();
-      if (validataionResult.success) {
+    if (activeStep !== maxSteps - 1) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else {
+      const validationResult = validate();
+      if (validationResult.success) {
         console.log(answerSet);
         console.log("success");
       } else {
-        setActiveStep(validataionResult.currentStep);
+        setActiveStep(validationResult.currentStep);
         setIsError(true);
       }
     }
-  };
+  }, [activeStep, isError, maxSteps, answerSet]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (isError) setIsError(false);
-
     if (activeStep !== 0) setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  }, [activeStep, isError]);
 
-  const handleChoice = (values: string) => {
-    answerSet[activeStep] = values;
-    handleNext();
-  };
+  const handleChoice = useCallback(
+    (value: string) => {
+      setAnswerSet((prevAnswers) => {
+        const updatedAnswers = [...prevAnswers];
+        updatedAnswers[activeStep] = value;
+        return updatedAnswers;
+      });
+    },
+    [activeStep]
+  );
 
-  const validate = () => {
-    let success = true;
-    const currentStep = answerSet.findIndex((item) => item === undefined);
-    if (currentStep !== -1) success = false;
+  const validate = useCallback(() => {
+    const currentStep = answerSet.findIndex((item) => item === null);
+    return {
+      success: currentStep === -1,
+      currentStep,
+    };
+  }, [answerSet]);
 
-    return { success, currentStep };
-  };
+  const currentQuestion = useMemo(() => setSteps[activeStep], [activeStep, setSteps]);
 
   return (
     <CenterContainer>
@@ -85,13 +94,13 @@ const QuizStepper = () => {
       </Box>
 
       <Box sx={{ mb: "30px" }}>
-        <Typography>{setSteps[activeStep].question}</Typography>
+        <Typography>{currentQuestion.text}</Typography>
       </Box>
 
-      {setSteps[activeStep].choices.map((choice, index) => {
-        const currentAnswer = answerSet[activeStep] === choice;
+      {currentQuestion.choices.map((choice, index) => {
+        const isActive = answerSet[activeStep] === choice;
         return (
-          <OptionButton key={index} onclick={() => handleChoice(choice)} active={currentAnswer}>
+          <OptionButton key={index} onclick={() => handleChoice(choice)} active={isActive}>
             {indexToLetter(index)}. {choice}
           </OptionButton>
         );

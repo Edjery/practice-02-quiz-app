@@ -1,7 +1,6 @@
-import { Box, Button, Typography } from "@mui/material";
-import { flowersLikeEyes, white } from "../values/colors";
-import CenterContainer from "./CenterContainer";
+import { Button, Typography } from "@mui/material";
 import CenterBox from "./CenterBox";
+import CenterContainer from "./CenterContainer";
 
 interface Props {
   onClick?: () => void;
