@@ -1,9 +1,9 @@
-import eiffelTower from "../../assets/images/eiffel_tower.png";
+import { eiffelTowerBackground } from "../background";
 
 export default {
     title: "Famous Landmarks Around the World.",
     description: "Test your knowledge about iconic landmarks from around the globe with this engaging quiz. From the towering Eiffel Tower to the ancient pyramids of Egypt, see how well you know these famous sites and their histories. Perfect for geography enthusiasts and trivia lovers alike!",
-    background: eiffelTower,
+    background: eiffelTowerBackground,
     questions:
         [
             {
@@ -59,5 +59,3 @@ export default {
         ]
     ,
 }
-
-// Photo by Viviana Ceballos from Pexels: https://www.pexels.com/photo/eiffel-tower-paris-3341574/
