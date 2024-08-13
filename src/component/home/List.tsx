@@ -1,29 +1,25 @@
 import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
+import QuestionSet from "../../values/interface/QuestionSet";
 import QuestionSetList from "../../values/QuestionSetList";
-import FadeSlideFromBottomDelay from "../animation/FadeSlideFromBottomDelay";
+import FadeSlideFromBottom from "../animation/FadeSlideFromBottom";
+import getRandomItems from "../helper/getRandomItems";
 import QuizCard from "./QuizCard";
 
 const List = () => {
-  const [animate, setAnimate] = useState(false);
-  const quizList = QuestionSetList;
-
-  useEffect(() => {
-    setAnimate(true);
-  }, []);
+  const quizList: QuestionSet[] = getRandomItems(QuestionSetList, 3);
 
   return (
-    <Grid container spacing={1}>
-      {quizList.map((quiz, index) => {
-        return (
-          <Grid key={index} item xs={4}>
-            <FadeSlideFromBottomDelay animate={animate} delay={index * 5}>
+    <FadeSlideFromBottom>
+      <Grid container spacing={1}>
+        {quizList.map((quiz, index) => {
+          return (
+            <Grid key={index} item xs={12} sm={6} md={4}>
               <QuizCard questionSet={quiz} index={index} />
-            </FadeSlideFromBottomDelay>
-          </Grid>
-        );
-      })}
-    </Grid>
+            </Grid>
+          );
+        })}
+      </Grid>
+    </FadeSlideFromBottom>
   );
 };
 

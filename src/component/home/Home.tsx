@@ -3,15 +3,20 @@ import { pensiveMood } from "../../values/colors";
 import List from "./List";
 import Title from "./Title";
 
-// #TODO change to robot font
 const Home = () => {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: "column",
         minHeight: "100vh",
         textAlign: "center",
-        p: "5vh",
+        px: "80px",
+        pt: "-100px",
         bgcolor: pensiveMood.gunmetalGray,
+
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Title />

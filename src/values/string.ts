@@ -1,4 +1,4 @@
-export const homePageTitle = "IJIRI'S QUIZ BUFFET"
+export const homePageTitle = "IJIRI'S RANDOM QUIZ BUFFET"
 
 export const quizGeneralDescription = "The quiz is about this topic, Good luck!"
 export const quizBeginMessage = "Are you ready to begin the quiz?"

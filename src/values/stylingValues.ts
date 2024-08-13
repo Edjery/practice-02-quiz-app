@@ -12,8 +12,7 @@ export const betterBoxStyle = {
 }
 export const centerItem = { display: "flex", justifyContent: "center", alignContent: "center", height: "100vh" };
 export const betterScrollStyle = {
-    overflowY: "auto",
-    overflowX: "hidden",
+    overflow: "auto",
     "&::-webkit-scrollbar": {
         width: "8px",
     },

@@ -4,9 +4,7 @@ import { middleEasternEmpire, pensiveMood, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { quizPath } from "../../values/paths";
 import QuestionSetList from "../../values/QuestionSetList";
-import { backgroundStyleGradient, betterBoxStyle, betterScrollStyle } from "../../values/stylingValues";
-import HoverPopup from "../animation/HoverPopup";
-import CenterBox from "../common/CenterBox";
+import { backgroundStyleGradient, betterBoxStyle, betterScrollStyle, hoverScale } from "../../values/stylingValues";
 
 interface Props {
   questionSet: QuestionSet;
@@ -20,30 +18,25 @@ const QuizCard = ({ questionSet = QuestionSetList[0], index }: Props) => {
   };
 
   return (
-    <HoverPopup key={index}>
-      <Button sx={{ borderRadius: "10px", textTransform: "none" }} onClick={handleClick}>
-        <Box
-          sx={{
-            ...backgroundStyleGradient(questionSet.background, middleEasternEmpire.darkBlue),
-            ...betterBoxStyle,
-            ...betterScrollStyle,
-            // bgcolor: bgColor,
-            m: "auto",
-            p: "25px",
-            height: "250px",
-            color: white,
-            border: "4px solid",
-            borderRadius: "10px",
-            borderColor: pensiveMood.jetBlack,
-          }}
-        >
-          <CenterBox>
-            <Typography sx={{ fontWeight: "bold", fontSize: "20px", mb: "20px" }}>{questionSet.title}</Typography>
-            <Typography sx={{ textAlign: "justify", textIndent: "25px" }}>{questionSet.description}</Typography>
-          </CenterBox>
-        </Box>
-      </Button>
-    </HoverPopup>
+    <Button sx={{ ...hoverScale, borderRadius: "10px", textTransform: "none" }} onClick={handleClick}>
+      <Box
+        key={index}
+        sx={{
+          ...backgroundStyleGradient(questionSet.background, middleEasternEmpire.darkBlue),
+          ...betterBoxStyle,
+          ...betterScrollStyle,
+          height: "250px",
+          p: "20px",
+          color: white,
+          border: "4px solid",
+          borderRadius: "10px",
+          borderColor: pensiveMood.jetBlack,
+        }}
+      >
+        <Typography sx={{ fontWeight: "bold", fontSize: "20px", mb: "20px" }}>{questionSet.title}</Typography>
+        <Typography sx={{ textAlign: "justify", textIndent: "25px" }}>{questionSet.description}</Typography>
+      </Box>
+    </Button>
   );
 };
 
