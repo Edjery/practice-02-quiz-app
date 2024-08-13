@@ -1,13 +1,13 @@
 import { Grid } from "@mui/material";
 import QuestionSet from "../../values/interface/QuestionSet";
-import QuestionSetList from "../../values/QuestionSetList";
 import FadeSlideFromBottom from "../animation/FadeSlideFromBottom";
-import getRandomItems from "../helper/getRandomItems";
 import QuizCard from "./QuizCard";
 
-const List = () => {
-  const quizList: QuestionSet[] = getRandomItems(QuestionSetList, 3);
+interface Props {
+  quizList: QuestionSet[];
+}
 
+const List = ({ quizList }: Props) => {
   return (
     <FadeSlideFromBottom>
       <Grid container spacing={1}>
