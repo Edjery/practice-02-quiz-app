@@ -1,20 +1,20 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import QuestionSet from "../../values/interface/QuestionSet";
-import FamousInvention from "../../values/questionSet/FamousInvention";
+import QuestionSetList from "../../values/questionSet/QuestionSetList";
 import {
   animationStyleFade,
   animationStyleFadeInUpwards,
   backgroundStyleLightGradient,
   centerItem,
 } from "../../values/stylingValues";
-import FamousLandmarks from "../../values/questionSet/FamousLandmarks";
-import Start from "./Start";
 import QuestionList from "./QuestionsList";
+import Start from "./Start";
+
+const questionSetList = QuestionSetList;
 
 const Main = () => {
-  // const questionSet: QuestionSet = FamousInvention;
-  const questionSet: QuestionSet = FamousLandmarks;
+  const questionSet: QuestionSet = questionSetList[0];
   const [isVisible, setVisible] = useState(true);
   const [animate, setAnimate] = useState(false);
 

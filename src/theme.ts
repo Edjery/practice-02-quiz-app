@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { flowersLikeEyes, pensiveMood } from "./values/colors";
+import { pensiveMood } from "./values/colors";
 
 export default createTheme({
     palette: {
