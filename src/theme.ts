@@ -7,5 +7,7 @@ export default createTheme({
             main: pensiveMood.pewter,
         },
     },
-
+    typography: {
+        fontFamily: '"Roboto", "Arial", sans-serif',
+    },
 });
