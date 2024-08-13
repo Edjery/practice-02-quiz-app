@@ -13,8 +13,8 @@ const CenterBox = ({ children }: Props) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "100%",
         textAlign: "center",
+        height: "100%",
       }}
     >
       {children}

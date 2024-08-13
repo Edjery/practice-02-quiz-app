@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { ReactNode } from "react";
-import { flowersLikeEyes, white } from "../../values/colors";
+import { black, flowersLikeEyes, transparency, white } from "../../values/colors";
 
 interface Props {
   children?: ReactNode;
@@ -12,14 +12,13 @@ const CenterContainer = ({ children }: Props) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        bgcolor: flowersLikeEyes.purple,
-        maxWidth: "800px",
+        bgcolor: flowersLikeEyes.charcoal + transparency[10],
         m: "auto",
         p: "10px",
-        width: "1200px",
+        width: "800px",
         height: "400px",
         borderRadius: "10px",
-        boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23)",
+        boxShadow: `0px 10px 20px ${black + transparency[75]}, 0px 6px 6px ${black + transparency[85]}`,
         color: white,
       }}
     >

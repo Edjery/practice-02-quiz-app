@@ -2,5 +2,7 @@ import Question from "./Question";
 
 export default interface QuestionSet {
     title: string;
-    questions: Question[]
+    description: string;
+    questions: Question[];
+    backgrounds: string;
 }

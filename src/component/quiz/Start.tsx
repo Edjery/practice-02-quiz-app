@@ -1,25 +1,29 @@
 import { Button, Typography } from "@mui/material";
-import CenterBox from "./CenterBox";
-import CenterContainer from "./CenterContainer";
+import { quizBeginMessage, startLabel } from "../../values/string";
+import CenterBox from "../common/CenterBox";
+import CenterContainer from "../common/CenterContainer";
 
 interface Props {
+  quizTitle: string;
+  quizDescription: string;
   onClick?: () => void;
 }
 
-const Start = ({ onClick }: Props) => {
+const Start = ({ quizTitle, quizDescription, onClick }: Props) => {
   return (
     <CenterContainer>
       <CenterBox>
-        <Typography
-          sx={{
-            fontWeight: "bold",
-            mb: "20px",
-          }}
-        >
-          Click start to begin
+        <Typography variant="h5" sx={{ textAlign: "center", fontWeight: "bold", mb: "20px" }}>
+          {quizTitle}
+        </Typography>
+        <Typography variant="body1" sx={{ textAlign: "justify", textIndent: "40px", mb: "40px", mx: "40px" }}>
+          {quizDescription}
+        </Typography>
+        <Typography variant="h6" sx={{ fontWeight: "bold", mb: "20px" }}>
+          {quizBeginMessage}
         </Typography>
         <Button variant="contained" onClick={onClick}>
-          Start
+          {startLabel}
         </Button>
       </CenterBox>
     </CenterContainer>

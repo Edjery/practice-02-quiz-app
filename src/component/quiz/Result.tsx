@@ -1,49 +1,53 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { flowersLikeEyes } from "../values/colors";
-import feedback from "../values/feedback";
-import QuestionSet from "../values/interface/QuestionSet";
-import { centerItem } from "../values/stylingValues";
-import CenterBox from "./CenterBox";
-import CenterContainer from "./CenterContainer";
+import { flowersLikeEyes } from "../../values/colors";
+import feedback from "../../values/feedback";
+import QuestionSet from "../../values/interface/QuestionSet";
+import { backLabel, emptyResultMessage, resultLabel } from "../../values/string";
+import { centerItem } from "../../values/stylingValues";
+import CenterBox from "../common/CenterBox";
+import CenterContainer from "../common/CenterContainer";
 
 const Result = () => {
-  let score = 0;
-  const location = useLocation();
-  const answerList: string[] = location.state?.answerList;
-  const questionSet: QuestionSet = location.state?.questionSet;
-  const totalQuestions = questionSet ? questionSet.questions.length : 0;
-  const isResult = answerList && questionSet;
+  const { state } = useLocation();
+  const answerList: string[] = state?.answerList || [];
+  const questionSet: QuestionSet = state?.questionSet;
 
-  if (isResult) {
-    questionSet.questions.forEach((question, index) => {
-      if (question.correctAnswer.includes(answerList[index])) score += 1;
-    });
-  }
+  const totalQuestions = questionSet?.questions.length || 0;
+  const score = questionSet
+    ? questionSet.questions.reduce((prev, question, index) => prev + (question.correctAnswer.includes(answerList[index]) ? 1 : 0), 0)
+    : 0;
 
-  const percentage = (score / totalQuestions) * 100;
-  const currentFeedback = feedback
-    .sort()
-    .reverse()
-    .find((item) => item.minPercentage <= percentage);
+  const percentage = totalQuestions ? (score / totalQuestions) * 100 : 0;
+  const currentFeedback = feedback.sort((a, b) => b.minPercentage - a.minPercentage).find((item) => item.minPercentage <= percentage);
 
-  const message = currentFeedback ? `${percentage !== 100 ? `${percentage}%` : ""} ${currentFeedback.message}` : `${percentage}%`;
-  const scoreText = `Score: ${score}/${totalQuestions} which is `;
+  const message = currentFeedback
+    ? `${percentage !== 100 ? `${percentage.toFixed(0)}% ` : ""}${currentFeedback.message}`
+    : `${percentage.toFixed(0)}%`;
+  const scoreText = `Score: ${score}/${totalQuestions}`;
+
   return (
     <Box sx={{ ...centerItem, bgcolor: flowersLikeEyes.purpleHaze }}>
       <CenterContainer>
         <CenterBox>
-          {isResult ? (
+          {questionSet ? (
             <Box>
-              <Typography sx={{ fontSize: "32px" }}>Result</Typography>
-              <Typography>{scoreText}</Typography>
-              <Typography sx={{ fontSize: "24px", mt: "60px" }}>{message}</Typography>
+              {/* add custom icon for result */}
+              <Typography variant="h5" mb="40px">
+                {resultLabel}
+              </Typography>
+              <Typography variant="h6" fontWeight="bold" mb="20px">
+                {scoreText}
+              </Typography>
+              <Typography variant="h6">{message}</Typography>
             </Box>
           ) : (
             <Box>
-              <Typography sx={{ fontSize: "32px", mb: "60px" }}>No result yet</Typography>
+              <Typography variant="h5" fontWeight="bold" mb="60px">
+                {emptyResultMessage}
+              </Typography>
               <Link to="/">
-                <Button variant="contained">Go back</Button>
+                <Button variant="contained">{backLabel}</Button>
               </Link>
             </Box>
           )}

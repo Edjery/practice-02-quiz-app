@@ -1,18 +1,21 @@
 import { Box, Button, MobileStepper, Typography } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
-import { flowersLikeEyes, red, white } from "../../values/colors";
-import questionSetA from "../../values/questionSetA";
+import { useNavigate } from "react-router-dom";
+import { flowersLikeEyes, red, transparency, white } from "../../values/colors";
+import QuestionSet from "../../values/interface/QuestionSet";
+import { errorMessage } from "../../values/string";
 import CenterContainer from "../common/CenterContainer";
 import indexToLetter from "../helper/indexToLetter";
 import OptionButton from "./OptionButton";
-import QuestionSet from "../../values/interface/QuestionSet";
-import { useNavigate } from "react-router-dom";
 
-const questionSet: QuestionSet = questionSetA;
-const initialAnswerList: string[] = Array(questionSet.questions.length).fill(null);
-const errorMessage: string = "All questions must be answered!";
+interface Props {
+  questionSet: QuestionSet;
+}
 
-const Stepper = () => {
+const backgroundColor = flowersLikeEyes.charcoal + transparency[90];
+
+const QuestionList = ({ questionSet }: Props) => {
+  const initialAnswerList: string[] = Array(questionSet.questions.length).fill(null);
   const questions = questionSet.questions;
   const maxSteps = questions.length;
 
@@ -71,7 +74,7 @@ const Stepper = () => {
           {questionSet.title}
         </Box>
         <MobileStepper
-          sx={{ bgcolor: flowersLikeEyes.purple, justifyContent: "center", width: "100%" }}
+          sx={{ bgcolor: backgroundColor, justifyContent: "center", width: "100%" }}
           variant="progress"
           steps={maxSteps}
           position="static"
@@ -85,7 +88,7 @@ const Stepper = () => {
               mb: "30px",
               p: "10px",
               bgcolor: red,
-              color: flowersLikeEyes.purpleHaze,
+              color: white,
               textAlign: "center",
               borderRadius: "20px",
             }}
@@ -109,7 +112,7 @@ const Stepper = () => {
       })}
 
       <MobileStepper
-        sx={{ bgcolor: flowersLikeEyes.purple, color: white }}
+        sx={{ bgcolor: backgroundColor, color: white, borderRadius: "20px" }}
         variant="text"
         steps={maxSteps}
         position="static"
@@ -129,4 +132,4 @@ const Stepper = () => {
   );
 };
 
-export default Stepper;
+export default QuestionList;
