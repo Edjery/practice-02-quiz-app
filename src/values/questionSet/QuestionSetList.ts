@@ -3,5 +3,5 @@ import FamousInvention from "./FamousInvention";
 import FamousLandmarks from "./FamousLandmarks";
 
 export default [
-    FamousInvention, FamousLandmarks, FamousFigures
+    FamousInvention, FamousLandmarks, FamousFigures,
 ]
