@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { flowersLikeEyes, transparency, white } from "../../values/colors";
+import { flowersLikeEyes, pensiveMood, transparency, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { quizPath } from "../../values/paths";
 import QuestionSetList from "../../values/questionSet/QuestionSetList";
@@ -9,13 +9,18 @@ import CenterBox from "../common/CenterBox";
 
 interface Props {
   questionSet: QuestionSet;
+  index?: number;
 }
 
-const QuizCard = ({ questionSet = QuestionSetList[0] }: Props) => {
+const QuizCard = ({ index, questionSet = QuestionSetList[0] }: Props) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(quizPath, { state: { questionSet } });
   };
+
+  const pos = index ?? 0;
+  const isEven = pos % 2 === 0;
+  const bgColor = isEven ? flowersLikeEyes.charcoal + transparency[10] : pensiveMood.gunmetalGray + transparency[5];
 
   return (
     <Button sx={{ borderRadius: "10px", textTransform: "none" }} onClick={handleClick}>
@@ -23,7 +28,7 @@ const QuizCard = ({ questionSet = QuestionSetList[0] }: Props) => {
         sx={{
           ...betterBoxStyle,
           ...betterScrollStyle,
-          bgcolor: flowersLikeEyes.charcoal + transparency[10],
+          bgcolor: bgColor,
           m: "auto",
           p: "25px",
           height: "200px",

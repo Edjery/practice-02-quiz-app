@@ -8,7 +8,7 @@ const List = () => {
     <Grid container spacing={1}>
       {quizList.map((quiz, index) => (
         <Grid key={index} item xs={4}>
-          <QuizCard questionSet={quiz} />
+          <QuizCard questionSet={quiz} index={index} />
         </Grid>
       ))}
     </Grid>
