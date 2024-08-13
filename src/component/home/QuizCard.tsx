@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { middleEasternEmpire, pensiveMood, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { quizPath } from "../../values/paths";
-import QuestionSetList from "../../values/questionSet/QuestionSetList";
+import QuestionSetList from "../../values/QuestionSetList";
 import { backgroundStyleGradient, betterBoxStyle, betterScrollStyle } from "../../values/stylingValues";
 import HoverPopup from "../animation/HoverPopup";
 import CenterBox from "../common/CenterBox";

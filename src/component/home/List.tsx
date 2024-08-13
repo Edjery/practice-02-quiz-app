@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
-import QuestionSetList from "../../values/questionSet/QuestionSetList";
+import QuestionSetList from "../../values/QuestionSetList";
 import FadeSlideFromBottomDelay from "../animation/FadeSlideFromBottomDelay";
 import QuizCard from "./QuizCard";
 
