@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import feedback from "../../values/feedback";
 import QuestionSet from "../../values/interface/QuestionSet";
-import { homePath } from "../../values/paths";
+import { homePath, quizPath } from "../../values/paths";
 import { backLabel, resultLabel, retryLabel } from "../../values/string";
 import { animationStyleFadeInScale, backgroundStyleLightGradient, centerItem } from "../../values/stylingValues";
 import CenterBox from "../common/CenterBox";
@@ -57,12 +57,12 @@ const Result = () => {
                   {message}
                 </Typography>
                 <Box>
-                  <Link to="/">
+                  <Link to={quizPath} state={{ questionSet }}>
                     <Button variant="contained" sx={{ mr: 2 }}>
                       {retryLabel}
                     </Button>
                   </Link>
-                  <Link to="/">
+                  <Link to={homePath}>
                     <Button variant="contained">{backLabel}</Button>
                   </Link>
                 </Box>

@@ -23,7 +23,7 @@ const Quiz = () => {
 
   useEffect(() => {
     setAnimate(!animate);
-    if (!questionSet || !questionSet.questions.length) {
+    if (!questionSet || questionSet.questions.length <= 0) {
       navigate(homePath);
     }
   }, [isVisible, questionSet]);
