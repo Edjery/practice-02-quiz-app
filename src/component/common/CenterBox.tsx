@@ -1,11 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, SxProps } from "@mui/material";
 import { ReactNode } from "react";
 
 interface Props {
+  sx?: SxProps;
   children?: ReactNode;
 }
 
-const CenterBox = ({ children }: Props) => {
+const CenterBox = ({ children, sx }: Props) => {
   return (
     <Box
       sx={{
@@ -15,6 +16,7 @@ const CenterBox = ({ children }: Props) => {
         alignItems: "center",
         textAlign: "center",
         height: "100%",
+        ...sx,
       }}
     >
       {children}

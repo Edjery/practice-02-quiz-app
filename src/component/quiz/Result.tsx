@@ -5,7 +5,7 @@ import feedback from "../../values/feedback";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { homePath, quizPath } from "../../values/paths";
 import { backLabel, resultLabel, retryLabel } from "../../values/string";
-import { animationStyleFadeInScale, backgroundStyleLightGradient, centerItem } from "../../values/stylingValues";
+import { animationStyleFadeInScale, backgroundStyleGradient, centerItem } from "../../values/stylingValues";
 import CenterBox from "../common/CenterBox";
 import CenterContainer from "../common/CenterContainer";
 
@@ -40,7 +40,7 @@ const Result = () => {
     : `${percentage.toFixed(0)}%`;
 
   return (
-    <Box sx={{ ...centerItem, ...backgroundStyleLightGradient(questionSet.background) }}>
+    <Box sx={{ ...centerItem, ...backgroundStyleGradient(questionSet.background) }}>
       <Box sx={{ ...animationStyleFadeInScale(true, animate) }}>
         <CenterContainer>
           <CenterBox>

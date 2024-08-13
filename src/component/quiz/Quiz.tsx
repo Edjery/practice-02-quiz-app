@@ -6,7 +6,7 @@ import { homePath } from "../../values/paths";
 import {
   animationStyleFadeInDownwards,
   animationStyleFadeInScale,
-  backgroundStyleLightGradient,
+  backgroundStyleGradient,
   centerItem,
 } from "../../values/stylingValues";
 import Questions from "./Questions";
@@ -33,7 +33,7 @@ const Quiz = () => {
   }, [setVisible, isVisible]);
 
   return (
-    <Box sx={{ ...centerItem, ...backgroundStyleLightGradient(questionSet.background) }}>
+    <Box sx={{ ...centerItem, ...backgroundStyleGradient(questionSet.background) }}>
       <Box sx={animationStyleFadeInDownwards(isVisible, animate)}>
         <Start quizTitle={questionSet.title} quizDescription={questionSet.description} onClick={handleClick} />
       </Box>
