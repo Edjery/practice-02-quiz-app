@@ -1,5 +1,5 @@
 export const quizGeneralDescription = "The quiz is about this topic, Good luck!"
-export const quizBeginMessage = "Click start to begin"
+export const quizBeginMessage = "Are you ready to begin the quiz?"
 
 export const startLabel = "Start"
 export const retryLabel = "Try again"

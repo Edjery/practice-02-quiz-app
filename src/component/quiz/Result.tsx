@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import feedback from "../../values/feedback";
 import QuestionSet from "../../values/interface/QuestionSet";
+import { homePath } from "../../values/paths";
 import { backLabel, resultLabel, retryLabel } from "../../values/string";
 import { animationStyleFadeInScale, backgroundStyleLightGradient, centerItem } from "../../values/stylingValues";
 import CenterBox from "../common/CenterBox";
@@ -10,15 +11,15 @@ import CenterContainer from "../common/CenterContainer";
 
 const Result = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const { state }: { state: { questionSet: QuestionSet; answerList: string[] } } = useLocation();
   const [animate, setAnimate] = useState(false);
-  const answerList: string[] = state?.answerList || [];
-  const questionSet: QuestionSet = state?.questionSet || { questions: [] };
+  const answerList = state.answerList || [];
+  const questionSet = state.questionSet || { questions: [] };
 
   useEffect(() => {
     setAnimate(true);
     if (!questionSet || !questionSet.questions.length) {
-      navigate("/");
+      navigate(homePath);
     }
   }, [questionSet, navigate]);
 

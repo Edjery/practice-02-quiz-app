@@ -1,5 +1,6 @@
-import { Button, Typography } from "@mui/material";
-import { quizBeginMessage, startLabel } from "../../values/string";
+import { Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import { backLabel, quizBeginMessage, startLabel } from "../../values/string";
 import CenterBox from "../common/CenterBox";
 import CenterContainer from "../common/CenterContainer";
 
@@ -22,9 +23,14 @@ const Start = ({ quizTitle, quizDescription, onClick }: Props) => {
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: "20px" }}>
           {quizBeginMessage}
         </Typography>
-        <Button variant="contained" onClick={onClick}>
-          {startLabel}
-        </Button>
+        <Box>
+          <Button variant="contained" onClick={onClick} sx={{ mr: 2 }}>
+            {startLabel}
+          </Button>
+          <Link to="/">
+            <Button variant="contained">{backLabel}</Button>
+          </Link>
+        </Box>
       </CenterBox>
     </CenterContainer>
   );

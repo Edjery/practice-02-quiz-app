@@ -1,14 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "./component/quiz/Main";
+import Home from "./component/home/Home";
+import Quiz from "./component/quiz/Quiz";
 import Result from "./component/quiz/Result";
+import { homePath, quizPath, resultPath } from "./values/paths";
 
 export default createBrowserRouter([
   {
-    path: "",
-    element: <Main />,
+    path: homePath,
+    element: <Home />,
   },
   {
-    path: "result",
+    path: quizPath,
+    element: <Quiz />,
+  },
+  {
+    path: resultPath,
     element: <Result />,
   },
 ]);

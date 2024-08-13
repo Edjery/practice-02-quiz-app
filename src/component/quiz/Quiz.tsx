@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import QuestionSet from "../../values/interface/QuestionSet";
-import QuestionSetList from "../../values/questionSet/QuestionSetList";
+import { homePath } from "../../values/paths";
 import {
   animationStyleFadeInDownwards,
   animationStyleFadeInScale,
@@ -11,16 +12,21 @@ import {
 import Questions from "./Questions";
 import Start from "./Start";
 
-const questionSetList = QuestionSetList;
-
-const Main = () => {
-  const questionSet: QuestionSet = questionSetList[0];
+// #TODO make question random every time
+const Quiz = () => {
+  const navigate = useNavigate();
+  const { state }: { state: { questionSet: QuestionSet } } = useLocation();
   const [isVisible, setVisible] = useState(true);
   const [animate, setAnimate] = useState(false);
 
+  const questionSet: QuestionSet = state.questionSet || { questionSet: [] };
+
   useEffect(() => {
     setAnimate(!animate);
-  }, [isVisible]);
+    if (!questionSet || !questionSet.questions.length) {
+      navigate(homePath);
+    }
+  }, [isVisible, questionSet]);
 
   const handleClick = useCallback(() => {
     setVisible(!isVisible);
@@ -38,4 +44,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Quiz;

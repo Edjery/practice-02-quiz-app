@@ -3,6 +3,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { flowersLikeEyes, transparency, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
+import { resultPath } from "../../values/paths";
 import CenterContainer from "../common/CenterContainer";
 import indexToLetter from "../helper/indexToLetter";
 import ErrorPrompt from "./ErrorPrompt";
@@ -15,15 +16,14 @@ interface Props {
 const backgroundColor = flowersLikeEyes.charcoal + transparency[90];
 
 const Questions = ({ questionSet }: Props) => {
+  const navigate = useNavigate();
   const initialAnswerList: string[] = Array(questionSet.questions.length).fill(null);
-  const questions = questionSet.questions;
-  const maxSteps = questions.length;
-
   const [activeStep, setActiveStep] = useState(0);
   const [isError, setIsError] = useState(false);
   const [answerList, setAnswerList] = useState(initialAnswerList);
 
-  const navigate = useNavigate();
+  const questions = questionSet.questions;
+  const maxSteps = questions.length;
 
   const handleNext = useCallback(() => {
     if (isError) setIsError(false);
@@ -33,7 +33,7 @@ const Questions = ({ questionSet }: Props) => {
     } else {
       const validationResult = validate();
       if (validationResult.success) {
-        navigate("result", { state: { answerList, questionSet } });
+        navigate(resultPath, { state: { questionSet, answerList } });
       } else {
         setActiveStep(validationResult.currentStep);
         setIsError(true);

@@ -1,10 +1,30 @@
-import { flowersLikeEyes, transparency } from "./colors";
+import { black, flowersLikeEyes, pensiveMood, transparency } from "./colors";
 
 // transition
 export const easeInOut = "0.3s ease-in-out";
 
 // normal styles
+export const betterBoxStyle = {
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: "10px",
+    boxShadow: `0px 10px 20px ${black + transparency[75]}, 0px 6px 6px ${black + transparency[85]}`
+}
 export const centerItem = { display: "flex", justifyContent: "center", alignContent: "center", height: "100vh" };
+export const betterScrollStyle = {
+    overflowY: "auto",
+    overflowX: "hidden",
+    "&::-webkit-scrollbar": {
+        width: "8px",
+    },
+    "&::-webkit-scrollbar-thumb": {
+        backgroundColor: `${pensiveMood.pewter}${transparency[50]}`,
+        borderRadius: "10px",
+    },
+    "&::-webkit-scrollbar-track": {
+        backgroundColor: "transparent",
+    },
+}
 
 // function styles
 export const backgroundStyleLightGradient = (background: string) => ({
