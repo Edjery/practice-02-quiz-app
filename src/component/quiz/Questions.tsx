@@ -1,11 +1,11 @@
 import { Box, Button, MobileStepper, Typography } from "@mui/material";
 import { useCallback, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { flowersLikeEyes, red, transparency, white } from "../../values/colors";
+import { flowersLikeEyes, transparency, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
-import { errorMessage } from "../../values/string";
 import CenterContainer from "../common/CenterContainer";
 import indexToLetter from "../helper/indexToLetter";
+import ErrorPrompt from "./ErrorPrompt";
 import OptionButton from "./OptionButton";
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 
 const backgroundColor = flowersLikeEyes.charcoal + transparency[90];
 
-const QuestionList = ({ questionSet }: Props) => {
+const Questions = ({ questionSet }: Props) => {
   const initialAnswerList: string[] = Array(questionSet.questions.length).fill(null);
   const questions = questionSet.questions;
   const maxSteps = questions.length;
@@ -82,20 +82,7 @@ const QuestionList = ({ questionSet }: Props) => {
           nextButton={null}
           backButton={null}
         />
-        {isError && (
-          <Box
-            sx={{
-              mb: "30px",
-              p: "10px",
-              bgcolor: red,
-              color: white,
-              textAlign: "center",
-              borderRadius: "20px",
-            }}
-          >
-            {errorMessage}
-          </Box>
-        )}
+        <ErrorPrompt isError={isError} />
       </Box>
 
       <Box sx={{ mb: "30px" }}>
@@ -132,4 +119,4 @@ const QuestionList = ({ questionSet }: Props) => {
   );
 };
 
-export default QuestionList;
+export default Questions;

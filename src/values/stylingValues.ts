@@ -15,7 +15,7 @@ export const backgroundStyleLightGradient = (background: string) => ({
     backgroundRepeat: "no-repeat",
 });
 
-export const animationStyleFadeInUpwards = (isVisible: boolean, animate: boolean) => ({
+export const animationStyleFadeInDownwards = (isVisible: boolean, animate: boolean) => ({
     display: isVisible ? "flex" : "none",
     transform: animate ? "translateY(0)" : "translateY(-100px)",
     opacity: animate ? 1 : 0,

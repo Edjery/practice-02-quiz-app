@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import QuestionSet from "../../values/interface/QuestionSet";
 import QuestionSetList from "../../values/questionSet/QuestionSetList";
 import {
   animationStyleFade,
-  animationStyleFadeInUpwards,
+  animationStyleFadeInDownwards,
   backgroundStyleLightGradient,
   centerItem,
 } from "../../values/stylingValues";
-import QuestionList from "./QuestionsList";
+import Questions from "./Questions";
 import Start from "./Start";
 
 const questionSetList = QuestionSetList;
@@ -22,17 +22,17 @@ const Main = () => {
     setAnimate(!animate);
   }, [isVisible]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setVisible(!isVisible);
-  };
+  }, [setVisible, isVisible]);
 
   return (
     <Box sx={{ ...centerItem, ...backgroundStyleLightGradient(questionSet.backgrounds) }}>
-      <Box sx={animationStyleFadeInUpwards(isVisible, animate)}>
+      <Box sx={animationStyleFadeInDownwards(isVisible, animate)}>
         <Start quizTitle={questionSet.title} quizDescription={questionSet.description} onClick={handleClick} />
       </Box>
       <Box sx={animationStyleFade(!isVisible, !animate)}>
-        <QuestionList questionSet={questionSet} />
+        <Questions questionSet={questionSet} />
       </Box>
     </Box>
   );
