@@ -3,8 +3,8 @@ import { useCallback, useEffect, useState } from "react";
 import QuestionSet from "../../values/interface/QuestionSet";
 import QuestionSetList from "../../values/questionSet/QuestionSetList";
 import {
-  animationStyleFade,
   animationStyleFadeInDownwards,
+  animationStyleFadeInScale,
   backgroundStyleLightGradient,
   centerItem,
 } from "../../values/stylingValues";
@@ -27,11 +27,11 @@ const Main = () => {
   }, [setVisible, isVisible]);
 
   return (
-    <Box sx={{ ...centerItem, ...backgroundStyleLightGradient(questionSet.backgrounds) }}>
+    <Box sx={{ ...centerItem, ...backgroundStyleLightGradient(questionSet.background) }}>
       <Box sx={animationStyleFadeInDownwards(isVisible, animate)}>
         <Start quizTitle={questionSet.title} quizDescription={questionSet.description} onClick={handleClick} />
       </Box>
-      <Box sx={animationStyleFade(!isVisible, !animate)}>
+      <Box sx={animationStyleFadeInScale(!isVisible, !animate)}>
         <Questions questionSet={questionSet} />
       </Box>
     </Box>

@@ -3,6 +3,7 @@ import plane from "../../assets/images/double_decker_plane.png";
 export default {
     title: "Famous Inventions and Discoveries.",
     description: "Dive into the world of groundbreaking inventions and discoveries with this quiz. From the wheel to space exploration, test your knowledge of the innovations that have shaped our world and revolutionized technology!",
+    background: plane,
     questions: [
         {
             text: "Who is credited with inventing the light bulb?",
@@ -55,7 +56,6 @@ export default {
             correctAnswer: ["Laws of Motion"]
         }
     ],
-    backgrounds: plane
 }
 
 // https://pixabay.com/photos/double-decker-plane-mountains-fog-2795557/

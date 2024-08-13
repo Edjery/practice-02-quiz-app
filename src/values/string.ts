@@ -2,6 +2,7 @@ export const quizGeneralDescription = "The quiz is about this topic, Good luck!"
 export const quizBeginMessage = "Click start to begin"
 
 export const startLabel = "Start"
+export const retryLabel = "Try again"
 export const resultLabel = "Result"
 export const backLabel = "Back"
 

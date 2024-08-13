@@ -4,5 +4,5 @@ export default interface QuestionSet {
     title: string;
     description: string;
     questions: Question[];
-    backgrounds: string;
+    background: string;
 }
