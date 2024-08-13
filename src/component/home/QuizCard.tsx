@@ -1,10 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { flowersLikeEyes, pensiveMood, transparency, white } from "../../values/colors";
+import { black, middleEasternEmpire, pensiveMood, sunAndSand, transparency } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { quizPath } from "../../values/paths";
 import QuestionSetList from "../../values/questionSet/QuestionSetList";
-import { betterBoxStyle, betterScrollStyle } from "../../values/stylingValues";
+import { betterBoxStyle, betterScrollStyle, hoverScale } from "../../values/stylingValues";
 import CenterBox from "../common/CenterBox";
 
 interface Props {
@@ -20,10 +20,10 @@ const QuizCard = ({ index, questionSet = QuestionSetList[0] }: Props) => {
 
   const pos = index ?? 0;
   const isEven = pos % 2 === 0;
-  const bgColor = isEven ? flowersLikeEyes.charcoal + transparency[10] : pensiveMood.gunmetalGray + transparency[5];
+  const bgColor = isEven ? middleEasternEmpire.champagne + transparency[20] : sunAndSand.champagne + transparency[20];
 
   return (
-    <Button sx={{ borderRadius: "10px", textTransform: "none" }} onClick={handleClick}>
+    <Button sx={{ ...hoverScale, borderRadius: "10px", textTransform: "none" }} onClick={handleClick}>
       <Box
         sx={{
           ...betterBoxStyle,
@@ -31,8 +31,12 @@ const QuizCard = ({ index, questionSet = QuestionSetList[0] }: Props) => {
           bgcolor: bgColor,
           m: "auto",
           p: "25px",
-          height: "200px",
-          color: white,
+          height: "250px",
+          color: black,
+          border: "4px solid",
+          borderRadius: "25px",
+          borderColor: pensiveMood.jetBlack,
+          boxSizing: "border-box",
         }}
       >
         <CenterBox>

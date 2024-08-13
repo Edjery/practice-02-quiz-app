@@ -46,4 +46,9 @@ export const animationStyleFadeInScale = (isVisible: boolean, animate: boolean) 
     opacity: animate ? 1 : 0,
     transition: `opacity ${easeInOut}, transform ${easeInOut}`,
 });
-
+export const hoverScale = {
+    transition: `transform ${easeInOut}`,
+    '&:hover': {
+        transform: "scale(1.05)"
+    }
+}

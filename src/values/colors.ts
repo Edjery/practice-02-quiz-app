@@ -24,12 +24,18 @@ export const transparency = {
 export const flowersLikeEyes = {
     purple: "#C55FFC", purpleHaze: "#EFDCF9", charcoal: "#323E42", violet: "#7954A1"
 }
-
 // Pensive Mood https://www.canva.com/colors/color-palettes/pensive-mood/
 export const pensiveMood = {
     white: "#E5E8E8", pewter: "#8D9797", gunmetalGray: "#4E545C", jetBlack: "#000401"
 }
-
+// Sun and Sand https://www.canva.com/colors/color-palettes/sun-and-sand/
+export const sunAndSand = {
+    white: "#FFFFFF", champagne: "#F7E7CE", blueGray: "#A2A3AA", taupe: "#AA9C92"
+}
+// Middle Eastern Empire https://www.canva.com/colors/color-palettes/middle-eastern-empire/
+export const middleEasternEmpire = {
+    roseRed: "#922C40", desertSun: "#DC9750", champagne: "#F3EAC0", darkBlue: "#1E2640"
+}
 // default (must be in hex code for transparency to work)
 export const white = "#FFFFFF"
 export const black = "#000000"
