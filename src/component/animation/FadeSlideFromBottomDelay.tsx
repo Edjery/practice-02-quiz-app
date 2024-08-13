@@ -17,7 +17,7 @@ const FadeSlideFromBottomDelay = ({ animate, delay, children }: Props) => {
     delay: delay * 50,
   });
 
-  return <animated.div style={props}>{children}</animated.div>;
+  return <animated.div style={props}>{children || ""}</animated.div>;
 };
 
 export default FadeSlideFromBottomDelay;

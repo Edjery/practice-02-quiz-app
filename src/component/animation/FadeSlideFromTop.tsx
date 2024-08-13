@@ -19,7 +19,9 @@ const FadeSlideFromTop = ({ children }: Props) => {
   }));
 
   return (
-    <animated.div style={{ ...props, display: "inline-flex", padding: "10px", marginBottom: "20px" }}>{children}</animated.div>
+    <animated.div style={{ ...props, display: "inline-flex", padding: "10px", marginBottom: "20px" }}>
+      {children || ""}
+    </animated.div>
   );
 };
 
