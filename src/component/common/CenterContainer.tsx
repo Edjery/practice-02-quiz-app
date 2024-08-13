@@ -14,9 +14,9 @@ const CenterContainer = ({ children }: Props) => {
         ...betterBoxStyle,
         bgcolor: flowersLikeEyes.charcoal + transparency[10],
         m: "auto",
-        p: "10px",
+        p: "20px",
+        minheight: "400px",
         width: "800px",
-        height: "400px",
         color: white,
       }}
     >
