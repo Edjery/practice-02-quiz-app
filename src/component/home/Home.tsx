@@ -30,15 +30,16 @@ const Home = () => {
         minHeight: "100vh",
         textAlign: "center",
         px: "80px",
-        pt: "-100px",
+        pt: "-20px",
         bgcolor: pensiveMood.gunmetalGray,
-
         alignItems: "center",
         justifyContent: "center",
       }}
     >
       <Title />
-      {isLoading ? <ListSkeleton /> : <List quizList={quizList} />}
+      <Box sx={{ minHeight: "300px", width: "100%" }}>
+        {isLoading ? <ListSkeleton list={quizList} /> : <List quizList={quizList} />}
+      </Box>
       <CustomButton onClick={handleRefresh} isLoading={isLoading} />
     </Box>
   );

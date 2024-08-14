@@ -4,7 +4,7 @@ import { flowersLikeEyes, pensiveMood } from "./values/colors";
 export default createTheme({
     palette: {
         primary: {
-            main: pensiveMood.gunmetalGray,
+            main: pensiveMood.pewter,
         },
         secondary: {
             main: flowersLikeEyes.charcoal,
