@@ -22,7 +22,7 @@ const Result = () => {
     if (!questionSet || !questionSet.questions.length) {
       navigate(homePath);
     }
-  }, [questionSet, navigate]);
+  });
 
   const totalQuestions = questionSet.questions.length;
   const score = questionSet.questions.reduce(
@@ -63,7 +63,7 @@ const Result = () => {
                   {message}
                 </Typography>
                 <Box>
-                  <Link to={quizPath} state={{ questionSet }}>
+                  <Link to={quizPath} state={{ questionSet: questionSet }}>
                     <Button variant="contained" sx={{ mr: 2 }}>
                       {retryLabel}
                     </Button>
