@@ -19,7 +19,7 @@ const Home = () => {
     setTimeout(() => {
       setQuizList(getRandomItems(QuestionSetList, 3));
       setIsLoading(false);
-    }, 300);
+    }, 500);
   };
 
   return (
