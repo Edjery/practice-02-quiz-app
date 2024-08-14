@@ -38,9 +38,3 @@ const ErrorPage = ({ error }: Props) => {
 };
 
 export default ErrorPage;
-{
-  /* <Box>
-<Typography variant="h1">Something went wrong!</Typography>
-<Typography variant="body1">Sorry, we couldn't find the page you were looking for.</Typography>
-</Box> */
-}
