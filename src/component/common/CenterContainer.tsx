@@ -12,11 +12,14 @@ const CenterContainer = ({ children }: Props) => {
     <Box
       sx={{
         ...betterBoxStyle,
+        display: "flex",
+        textAlign: "center",
         bgcolor: flowersLikeEyes.charcoal + transparency[10],
         m: "auto",
-        p: "20px",
-        minheight: "400px",
-        width: "800px",
+        p: { xs: "10px", sm: "20px" },
+        minHeight: "450px",
+        width: { xs: "300px", sm: "500px", lg: "800px" },
+        maxWidth: "100%",
         color: white,
       }}
     >

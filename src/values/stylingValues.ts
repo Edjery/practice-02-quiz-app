@@ -5,8 +5,6 @@ export const easeInOut = "0.3s ease-in-out";
 
 // normal styles
 export const betterBoxStyle = {
-    display: "flex",
-    flexDirection: "column",
     borderRadius: "10px",
     boxShadow: `0px 10px 20px ${black + transparency[75]}, 0px 6px 6px ${black + transparency[85]}`
 }

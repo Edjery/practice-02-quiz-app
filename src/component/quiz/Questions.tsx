@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { flowersLikeEyes, transparency, white } from "../../values/colors";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { resultPath } from "../../values/paths";
+import CenterBox from "../common/CenterBox";
 import CenterContainer from "../common/CenterContainer";
 import indexToLetter from "../helper/indexToLetter";
 import ErrorPrompt from "./ErrorPrompt";
@@ -69,52 +70,56 @@ const Questions = ({ questionSet }: Props) => {
 
   return (
     <CenterContainer>
-      <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-        <Box component="h3" sx={{ textAlign: "center" }}>
-          {questionSet.title}
+      <CenterBox sx={{ flexDirection: "column" }}>
+        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", textAlign: "center" }}>
+          <Box component="h3" sx={{ textAlign: "center" }}>
+            {questionSet.title}
+          </Box>
+          <MobileStepper
+            sx={{ bgcolor: backgroundColor, justifyContent: "center", width: "100%" }}
+            variant="progress"
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            nextButton={null}
+            backButton={null}
+          />
+          <ErrorPrompt isError={isError} />
         </Box>
-        <MobileStepper
-          sx={{ bgcolor: backgroundColor, justifyContent: "center", width: "100%" }}
-          variant="progress"
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          nextButton={null}
-          backButton={null}
-        />
-        <ErrorPrompt isError={isError} />
-      </Box>
 
-      <Box sx={{ mb: "30px" }}>
-        <Typography>{currentQuestion.text}</Typography>
-      </Box>
+        <Box sx={{ mb: "30px" }}>
+          <Typography>{currentQuestion.text}</Typography>
+        </Box>
 
-      {currentQuestion.choices.map((choice, index) => {
-        const isActive = answerList[activeStep] === choice;
-        return (
-          <OptionButton key={index} onclick={() => handleChoice(choice)} active={isActive}>
-            {indexToLetter(index)}. {choice}
-          </OptionButton>
-        );
-      })}
+        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          {currentQuestion.choices.map((choice, index) => {
+            const isActive = answerList[activeStep] === choice;
+            return (
+              <OptionButton key={index} onclick={() => handleChoice(choice)} active={isActive}>
+                {indexToLetter(index)}. {choice}
+              </OptionButton>
+            );
+          })}
 
-      <MobileStepper
-        sx={{ bgcolor: backgroundColor, color: white, borderRadius: "20px" }}
-        variant="text"
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps} sx={{ color: white }}>
-            {activeStep === maxSteps - 1 ? "Finish" : "Next"}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0} sx={{ color: white }}>
-            Back
-          </Button>
-        }
-      />
+          <MobileStepper
+            sx={{ bgcolor: backgroundColor, color: white, borderRadius: "20px" }}
+            variant="text"
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            nextButton={
+              <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps} sx={{ color: white }}>
+                {activeStep === maxSteps - 1 ? "Finish" : "Next"}
+              </Button>
+            }
+            backButton={
+              <Button size="small" onClick={handleBack} disabled={activeStep === 0} sx={{ color: white }}>
+                Back
+              </Button>
+            }
+          />
+        </Box>
+      </CenterBox>
     </CenterContainer>
   );
 };

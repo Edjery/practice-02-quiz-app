@@ -11,11 +11,10 @@ const CenterBox = ({ children, sx }: Props) => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        height: "100%",
+        width: "inherit",
         ...sx,
       }}
     >
