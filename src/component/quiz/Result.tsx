@@ -2,6 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import feedback from "../../values/feedback";
+import { cupcakeIcon } from "../../values/icon";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { homePath, quizPath } from "../../values/paths";
 import { backLabel, resultLabel, retryLabel } from "../../values/string";
@@ -46,7 +47,12 @@ const Result = () => {
           <CenterBox>
             {questionSet.questions.length > 0 && (
               <Box>
-                {/* add custom icon for result */}
+                <Box
+                  component="img"
+                  src={currentFeedback ? currentFeedback.icon : cupcakeIcon}
+                  alt="Trophy Icon"
+                  sx={{ width: "100px", height: "100px" }}
+                />
                 <Typography variant="h5" mb="40px" fontWeight="bold">
                   {resultLabel}
                 </Typography>
