@@ -8,7 +8,7 @@ const FadeSlideFromBottom = ({ children }: Props) => {
   const [props] = useSpring(() => ({
     from: {
       opacity: 0,
-      transform: "translateY(100px)",
+      transform: "translateY(20px)",
     },
     to: {
       opacity: 1,
