@@ -9,14 +9,13 @@ import { backLabel, resultLabel, retryLabel } from "../../values/string";
 import { animationStyleFadeInScale, backgroundStyleGradient, centerItem } from "../../values/stylingValues";
 import CenterBox from "../common/CenterBox";
 import CenterContainer from "../common/CenterContainer";
-import randomizeQuestionSet from "../helper/randomizeQuestionSet";
 
 const Result = () => {
   const navigate = useNavigate();
   const { state }: { state: { questionSet: QuestionSet; answerList: string[] } } = useLocation();
   const [animate, setAnimate] = useState(false);
   const answerList = state.answerList || [];
-  const questionSet = randomizeQuestionSet(state.questionSet) || { questions: [] };
+  const questionSet = state.questionSet || { questions: [] };
 
   useEffect(() => {
     setAnimate(true);
