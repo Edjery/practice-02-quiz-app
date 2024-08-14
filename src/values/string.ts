@@ -7,7 +7,7 @@ export const startLabel = "Start"
 export const retryLabel = "Try the quiz again"
 export const resultLabel = "Result"
 export const backLabel = "Back to the quiz buffet"
-export const refreshLabel = "Refresh Page"
+export const refreshLabel = "Randomize"
 export const menuLabel = "Return to menu"
 export const loadingLabel = "loading..."
 
