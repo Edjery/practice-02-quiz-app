@@ -16,7 +16,7 @@ interface Props {
 const QuizCard = ({ questionSet = QuestionSetList[0], index }: Props) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(quizPath, { state: { questionSet } });
+    navigate(quizPath, { state: { questionSet: questionSet } });
   };
 
   return (

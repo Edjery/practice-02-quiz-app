@@ -34,7 +34,7 @@ const Questions = ({ questionSet }: Props) => {
     } else {
       const validationResult = validate();
       if (validationResult.success) {
-        navigate(resultPath, { state: { questionSet, answerList } });
+        navigate(resultPath, { state: { questionSet: questionSet, answerList: answerList } });
       } else {
         setActiveStep(validationResult.currentStep);
         setIsError(true);
