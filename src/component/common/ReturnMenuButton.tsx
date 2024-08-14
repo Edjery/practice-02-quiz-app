@@ -14,7 +14,9 @@ const ReturnMenuButton = () => {
       }}
     >
       <Link to={homePath} style={{ textDecoration: "none" }}>
-        <Button variant="contained">{menuLabel}</Button>
+        <Button variant="contained" color="secondary">
+          {menuLabel}
+        </Button>
       </Link>
     </Box>
   );
