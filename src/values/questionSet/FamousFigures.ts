@@ -2,7 +2,7 @@ import { ancientGreekTempleBackground } from "../background";
 
 export default {
     title: "Famous Historical Figures Around the World.",
-    description: "Challenge yourself with this quiz on some of the most influential historical figures in history. From visionary leaders to revolutionary thinkers, test your knowledge of these remarkable individuals and their contributions to history.",
+    description: "Test your knowledge of influential historical figures with this quiz on visionary leaders and revolutionary thinkers.",
     background: ancientGreekTempleBackground,
     questions:
         [

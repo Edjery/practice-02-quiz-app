@@ -2,7 +2,7 @@ import { eiffelTowerBackground } from "../background";
 
 export default {
     title: "Famous Landmarks Around the World.",
-    description: "Test your knowledge about iconic landmarks from around the globe with this engaging quiz. From the towering Eiffel Tower to the ancient pyramids of Egypt, see how well you know these famous sites and their histories. Perfect for geography enthusiasts and trivia lovers alike!",
+    description: "Challenge yourself with this quiz on iconic landmarks worldwide, from the Eiffel Tower to the Egyptian pyramids. Perfect for geography buffs and trivia fans!",
     background: eiffelTowerBackground,
     questions:
         [

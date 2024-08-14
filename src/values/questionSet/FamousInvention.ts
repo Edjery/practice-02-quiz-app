@@ -3,7 +3,7 @@ import { planeBackGround } from "../background";
 
 export default {
     title: "Famous Inventions and Discoveries.",
-    description: "Dive into the world of groundbreaking inventions and discoveries with this quiz. From the wheel to space exploration, test your knowledge of the innovations that have shaped our world and revolutionized technology!",
+    description: "Test your knowledge of groundbreaking inventions and discoveries, from the wheel to space exploration, with this quiz on innovations that have shaped our world.",
     background: planeBackGround,
     questions: [
         {
