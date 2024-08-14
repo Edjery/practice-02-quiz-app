@@ -10,6 +10,7 @@ import {
   centerItem,
 } from "../../values/stylingValues";
 import ReturnMenuButton from "../common/ReturnMenuButton";
+import randomizeQuestionSet from "../helper/randomizeQuestionSet";
 import Questions from "./Questions";
 import Start from "./Start";
 
@@ -19,14 +20,14 @@ const Quiz = () => {
   const [isVisible, setVisible] = useState(true);
   const [animate, setAnimate] = useState(false);
 
-  const questionSet: QuestionSet = state.questionSet || { questionSet: [] };
+  const questionSet: QuestionSet = randomizeQuestionSet(state.questionSet) || { questionSet: [] };
 
   useEffect(() => {
     setAnimate(!animate);
     if (!questionSet || questionSet.questions.length <= 0) {
       navigate(homePath);
     }
-  }, [isVisible, questionSet]);
+  }, [isVisible]);
 
   const handleClick = useCallback(() => {
     setVisible(!isVisible);
