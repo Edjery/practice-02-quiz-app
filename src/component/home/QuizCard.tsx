@@ -38,7 +38,7 @@ const QuizCard = ({ questionSet = QuestionSetList[0], index }: Props) => {
         <CenterBox>
           <Box>
             <Typography sx={{ fontWeight: "bold", fontSize: "20px", mb: "20px" }}>{questionSet.title}</Typography>
-            <Typography sx={{ textAlign: "justify", textIndent: "25px" }}>{questionSet.description}</Typography>
+            <Typography sx={{ textAlign: "center" }}>{questionSet.description}</Typography>
           </Box>
         </CenterBox>
       </CenterContainer>
