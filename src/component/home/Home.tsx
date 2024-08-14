@@ -38,7 +38,7 @@ const Home = () => {
     >
       <Title />
       <Box sx={{ minHeight: "300px", width: "100%" }}>
-        {isLoading ? <ListSkeleton list={quizList} /> : <List quizList={quizList} />}
+        {isLoading ? <ListSkeleton count={quizList.length} /> : <List quizList={quizList} />}
       </Box>
       <CustomButton onClick={handleRefresh} isLoading={isLoading} />
     </Box>
