@@ -14,8 +14,8 @@ const Result = () => {
   const navigate = useNavigate();
   const { state }: { state: { questionSet: QuestionSet; answerList: string[] } } = useLocation();
   const [animate, setAnimate] = useState(false);
-  const answerList = state.answerList || [];
-  const questionSet = state.questionSet || { questions: [] };
+  const answerList = state?.answerList || [];
+  const questionSet = state?.questionSet || { questions: [] };
 
   useEffect(() => {
     setAnimate(true);
@@ -50,7 +50,7 @@ const Result = () => {
                 <Box
                   component="img"
                   src={currentFeedback ? currentFeedback.icon : cupcakeIcon}
-                  alt="Trophy Icon"
+                  alt="Congrats"
                   sx={{ width: "100px", height: "100px" }}
                 />
                 <Typography variant="h5" mb="40px" fontWeight="bold">
