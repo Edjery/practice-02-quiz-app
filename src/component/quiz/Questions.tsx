@@ -71,7 +71,7 @@ const Questions = ({ questionSet }: Props) => {
   return (
     <CenterContainer>
       <CenterBox sx={{ flexDirection: "column" }}>
-        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", textAlign: "center" }}>
+        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", textAlign: "center", width: "100%" }}>
           <Box component="h3" sx={{ textAlign: "center" }}>
             {questionSet.title}
           </Box>
