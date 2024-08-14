@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import QuestionSet from "../../values/interface/QuestionSet";
 import { homePath } from "../../values/paths";
+import { backLabel, menuLabel } from "../../values/string";
 import {
   animationStyleFadeInDownwards,
   animationStyleFadeInScale,
@@ -11,6 +12,7 @@ import {
 } from "../../values/stylingValues";
 import Questions from "./Questions";
 import Start from "./Start";
+import ReturnMenuButton from "../common/ReturnMenuButton";
 
 // #TODO make question random every time
 const Quiz = () => {
@@ -34,6 +36,7 @@ const Quiz = () => {
 
   return (
     <Box sx={{ ...centerItem, ...backgroundStyleGradient(questionSet.background) }}>
+      <ReturnMenuButton />
       <Box sx={animationStyleFadeInDownwards(isVisible, animate)}>
         <Start quizTitle={questionSet.title} quizDescription={questionSet.description} onClick={handleClick} />
       </Box>

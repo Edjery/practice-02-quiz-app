@@ -8,6 +8,7 @@ export const retryLabel = "Try again"
 export const resultLabel = "Result"
 export const backLabel = "Back"
 export const refreshLabel = "Refresh Page"
+export const menuLabel = "Return to menu"
 export const loadingLabel = "loading..."
 
 export const emptyResultMessage = "No result yet"
