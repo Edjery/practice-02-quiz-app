@@ -26,10 +26,11 @@ const QuizCard = ({ questionSet = QuestionSetList[0], index }: Props) => {
         sx={{
           ...backgroundStyleGradient(questionSet.background, middleEasternEmpire.darkBlue),
           ...betterScrollStyle,
+          display: { xs: "block", md: "flex" },
           p: "20px",
           height: "250px",
           minHeight: "250px",
-          width: "auto",
+          width: "100%",
           border: "4px solid",
           borderRadius: "10px",
           borderColor: pensiveMood.jetBlack,
