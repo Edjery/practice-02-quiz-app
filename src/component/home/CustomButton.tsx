@@ -1,4 +1,4 @@
-import { Button, CircularProgress } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import { refreshLabel } from "../../values/string";
 import FadeSlideFromBottom from "../animation/FadeSlideFromBottom";
 
@@ -15,9 +15,9 @@ const CustomButton = ({ isLoading, onClick }: Props) => {
         disabled={isLoading}
         color="secondary"
         onClick={onClick}
-        sx={{ my: "40px", width: "150px", height: "50px" }}
+        sx={{ my: "40px", width: "200px", height: "50px" }}
       >
-        {isLoading ? <CircularProgress color="primary" /> : refreshLabel}
+        {isLoading ? <CircularProgress color="primary" /> : <Typography sx={{ letterSpacing: "5px" }}>{refreshLabel}</Typography>}
       </Button>
     </FadeSlideFromBottom>
   );
