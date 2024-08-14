@@ -1,13 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, SxProps } from "@mui/material";
 import { ReactNode } from "react";
 import { flowersLikeEyes, transparency, white } from "../../values/colors";
 import { betterBoxStyle } from "../../values/stylingValues";
 
 interface Props {
   children?: ReactNode;
+  sx?: SxProps;
 }
 
-const CenterContainer = ({ children }: Props) => {
+const CenterContainer = ({ children, sx }: Props) => {
   return (
     <Box
       sx={{
@@ -21,6 +22,7 @@ const CenterContainer = ({ children }: Props) => {
         width: { xs: "300px", sm: "500px", lg: "800px" },
         maxWidth: "100%",
         color: white,
+        ...sx,
       }}
     >
       {children}

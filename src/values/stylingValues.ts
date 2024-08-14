@@ -24,8 +24,8 @@ export const betterScrollStyle = {
 }
 
 // function styles
-export const backgroundStyleGradient = (background: string, color = flowersLikeEyes.purpleHaze) => ({
-    background: `linear-gradient(${color + transparency[90]}, ${color + transparency[10]
+export const backgroundStyleGradient = (background: string, color = flowersLikeEyes.purpleHaze, firstGradient = transparency[90], secondGradient = transparency[10]) => ({
+    background: `linear-gradient(${color + firstGradient}, ${color + secondGradient
         }), url(${background})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
