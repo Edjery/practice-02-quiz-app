@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import feedback from "../../values/feedback";
@@ -51,7 +51,7 @@ const Result = () => {
                   component="img"
                   src={currentFeedback ? currentFeedback.icon : cupcakeIcon}
                   alt="Congrats"
-                  sx={{ width: "100px", height: "100px" }}
+                  sx={{ mt: "20px", width: "100px", height: "100px" }}
                 />
                 <Typography variant="h5" mb="40px" fontWeight="bold">
                   {resultLabel}
@@ -62,16 +62,18 @@ const Result = () => {
                 <Typography variant="h6" mb="20px">
                   {message}
                 </Typography>
-                <Box>
+                <Stack
+                  direction={{ xs: "column", sm: "row" }}
+                  spacing={{ xs: "20px", sm: "20px" }}
+                  sx={{ justifyContent: "center", mb: "20px" }}
+                >
                   <Link to={quizPath} state={{ questionSet: questionSet }}>
-                    <Button variant="contained" sx={{ mr: 2 }}>
-                      {retryLabel}
-                    </Button>
+                    <Button variant="contained">{retryLabel}</Button>
                   </Link>
                   <Link to={homePath}>
                     <Button variant="contained">{backLabel}</Button>
                   </Link>
-                </Box>
+                </Stack>
               </Box>
             )}
           </CenterBox>
