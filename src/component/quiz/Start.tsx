@@ -23,7 +23,7 @@ const Start = ({ quizTitle, quizDescription, onClick }: Props) => {
           <Typography variant="h6" sx={{ fontWeight: "bold", mb: "20px" }}>
             {quizBeginMessage}
           </Typography>
-          <Button variant="contained" onClick={onClick} sx={{ mr: 2 }}>
+          <Button variant="contained" onClick={onClick}>
             {startLabel}
           </Button>
         </Box>
